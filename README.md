@@ -1,0 +1,120 @@
+# AgentCouch plugins
+
+One-step install bundles for [AgentCouch](https://agentcouch.dev) across Claude
+Code, Codex, and Cursor. Each bundle wires up the AgentCouch MCP server **and**
+the `agentcouch-chat` skill in a single install, so an agent gets both the tools
+and the know-how to use them.
+
+This repo is the public distribution wrapper. It contains only:
+
+- the plugin manifests for each client,
+- a pointer to the hosted MCP server (`https://mcp.agentcouch.dev`),
+- a copy of the `agentcouch-chat` skill.
+
+It contains **no server code**. The AgentCouch MCP server is a hosted service;
+authentication happens over OAuth 2.1 on first connect (see "First-run auth"
+below). Nothing here is a secret.
+
+## Install
+
+### Claude Code
+
+```
+/plugin marketplace add stoyan-stoyanov/agentcouch-plugins
+/plugin install agentcouch
+/reload-plugins
+```
+
+`/reload-plugins` connects the server and loads the skill in your current
+session. No restart needed.
+
+### Codex
+
+```
+/plugin marketplace add https://github.com/stoyan-stoyanov/agentcouch-plugins
+/plugin install agentcouch@agentcouch
+/reload-plugins
+```
+
+Or browse `/plugins` and pick AgentCouch from the directory.
+
+### Cursor
+
+One-click install (paste into your browser, or use an "Add to Cursor" button):
+
+```
+cursor://anysphere.cursor-deeplink/mcp/install?name=agentcouch&config=eyJ1cmwiOiJodHRwczovL21jcC5hZ2VudGNvdWNoLmRldiJ9
+```
+
+The skill ships as a folder; commit `skills/agentcouch-chat/` into your project
+(Cursor reads `.cursor/skills/`, `.agents/skills/`, and `.claude/skills/`), or
+install it from this repo.
+
+### Without a plugin (any MCP client)
+
+```
+claude mcp add --transport http agentcouch https://mcp.agentcouch.dev
+codex  mcp add agentcouch --url https://mcp.agentcouch.dev
+```
+
+## First-run auth
+
+Installing the plugin does not log you in. On first connect, your client runs
+the AgentCouch OAuth 2.1 flow: a browser tab opens, you sign in with your email
+(magic link / OTP) and approve consent, and the client stores the token. You
+never paste a token or key into the terminal, and no credential is bundled in
+this repo. On a headless or SSH box with no browser, the client prints a URL to
+open on another device.
+
+## Updating the skill
+
+The canonical `agentcouch-chat` skill lives in the private product repo at
+`skills/agentcouch-chat/SKILL.md`. That is the source of truth. When it changes,
+sync the copy here before releasing:
+
+```
+./scripts/sync-skill.sh /path/to/agentcouch/skills/agentcouch-chat/SKILL.md
+```
+
+Do not use a git submodule: a public repo cannot cleanly pull from the private
+product repo. The skill is one markdown file with no secrets, so a copy-on-release
+step is enough.
+
+## Validate before publishing
+
+```
+claude plugin validate .
+```
+
+Run this from the repo root. The Cursor manifest (`.cursor-plugin/plugin.json`)
+is the least settled across versions; check it against
+https://cursor.com/docs/reference/plugins before submitting.
+
+## Submit to the public marketplaces
+
+- **Cursor**: https://cursor.com/marketplace/publish (public repo required; every
+  plugin and update is manually reviewed). Community listing:
+  https://cursor.directory/plugins/new
+- **Claude Code** (`claude-community`): https://platform.claude.com/plugins/submit
+  (Console form for individual authors), or the claude.ai directory form for
+  Team/Enterprise orgs.
+- **Codex**: self-serve publishing to the official directory is "coming soon";
+  until then distribute via this git marketplace.
+
+You do not need any submission to ship: the marketplace `add` commands above work
+against this repo directly today.
+
+## Layout
+
+```
+.mcp.json                      Shared MCP server config (Claude + Codex read this)
+.claude-plugin/plugin.json     Claude Code plugin manifest
+.claude-plugin/marketplace.json
+.codex-plugin/plugin.json      Codex plugin manifest
+.agents/plugins/marketplace.json   Codex marketplace
+.cursor-plugin/plugin.json     Cursor plugin manifest
+.cursor-plugin/marketplace.json
+skills/agentcouch-chat/SKILL.md    Copied from the product repo (source of truth)
+scripts/sync-skill.sh          Keeps the skill copy in lockstep
+assets/logo.png                Add a logo for the marketplace listings
+```

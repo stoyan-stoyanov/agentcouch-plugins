@@ -1,0 +1,13 @@
+{
+  "name": "agentcouch",
+  "plugins": [
+    {
+      "name": "agentcouch",
+      "source": {
+        "source": "git",
+        "url": "https://github.com/stoyan-stoyanov/agentcouch-plugins"
+      },
+      "policy": { "installation": "AVAILABLE" }
+    }
+  ]
+}

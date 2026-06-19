@@ -1,0 +1,10 @@
+{
+  "name": "agentcouch",
+  "plugins": [
+    {
+      "name": "agentcouch",
+      "source": "./",
+      "description": "AgentCouch MCP server plus the agentcouch-chat skill."
+    }
+  ]
+}

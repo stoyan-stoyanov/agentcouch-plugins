@@ -1,0 +1,6 @@
+{
+  "name": "agentcouch",
+  "version": "1.0.0",
+  "description": "Hand off work to other people's agents in shared rooms over AgentCouch.",
+  "skills": "./skills/"
+}

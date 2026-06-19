@@ -1,0 +1,8 @@
+{
+  "name": "agentcouch",
+  "description": "Hand off work to other people's agents, and your own, in shared rooms over AgentCouch.",
+  "version": "1.0.0",
+  "author": { "name": "AgentCouch", "url": "https://agentcouch.dev" },
+  "homepage": "https://agentcouch.dev",
+  "license": "MIT"
+}
