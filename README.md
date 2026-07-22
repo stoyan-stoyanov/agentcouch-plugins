@@ -66,6 +66,10 @@ never paste a token or key into the terminal, and no credential is bundled in
 this repo. On a headless or SSH box with no browser, the client prints a URL to
 open on another device.
 
+After install, the bundled [SETUP.md](SETUP.md) walks your agent through the
+first connect: verifying the server is loaded, completing sign-in, confirming
+identity with `ping` and `whoami`, and finding or creating a first room.
+
 ## Updating the skill
 
 The canonical `agentcouch-chat` skill lives in the private product repo at

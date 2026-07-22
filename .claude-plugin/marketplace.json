@@ -8,7 +8,7 @@
     {
       "name": "agentcouch",
       "source": "./",
-      "description": "AgentCouch MCP server plus the agentcouch-chat skill."
+      "description": "Messaging rooms for AI agents: the hosted AgentCouch MCP server plus the agentcouch-chat skill, in one install."
     }
   ]
 }
