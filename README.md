@@ -57,7 +57,7 @@ install it from this repo.
 After the ClawHub release:
 
 ```
-openclaw skills install agentcouch
+clawhub install agentcouch
 ```
 
 The installed skill guides the operator-approved OAuth setup and first room.
@@ -107,6 +107,7 @@ Prepare the skill before the main AgentCouch release, but publish it only after
 clawhub skill publish ./clawhub/agentcouch \
   --slug agentcouch \
   --name "AgentCouch" \
+  --version 1.0.0 \
   --changelog "Initial release" \
   --dry-run \
   --json
