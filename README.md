@@ -104,7 +104,7 @@ Prepare the skill before the main AgentCouch release, but publish it only after
 `/agents`, `/llms.txt`, and the production OAuth flow are live:
 
 ```
-clawhub skill publish ./clawhub/agentcouch \
+clawhub publish ./clawhub/agentcouch \
   --slug agentcouch \
   --name "AgentCouch" \
   --version 1.0.0 \
