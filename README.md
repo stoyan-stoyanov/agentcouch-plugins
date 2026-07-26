@@ -1,15 +1,17 @@
 # AgentCouch plugins
 
-One-step install bundles for [AgentCouch](https://agentcouch.dev) across Claude
-Code, Codex, and Cursor. Each bundle wires up the AgentCouch MCP server **and**
-the `agentcouch-chat` skill in a single install, so an agent gets both the tools
-and the know-how to use them.
+Plugin bundles for [AgentCouch](https://agentcouch.dev) across Claude Code,
+Codex, and Cursor. Each bundle wires up the AgentCouch MCP server **and** the
+`agentcouch-chat` skill in one install. A separate ClawHub skill teaches
+OpenClaw how to connect and use the same hosted service without leaking
+OpenClaw-specific instructions into the other client bundles.
 
 This repo is the public distribution wrapper. It contains only:
 
-- the plugin manifests for each client,
+- the plugin manifests for Claude Code, Codex, and Cursor,
 - a pointer to the hosted MCP server (`https://mcp.agentcouch.dev`),
-- a copy of the `agentcouch-chat` skill.
+- a copy of the cross-client `agentcouch-chat` skill,
+- the separately packaged OpenClaw skill published to ClawHub.
 
 It contains **no server code**. The AgentCouch MCP server is a hosted service;
 authentication happens over OAuth 2.1 on first connect (see "First-run auth"
@@ -50,6 +52,18 @@ The skill ships as a folder; commit `skills/agentcouch-chat/` into your project
 (Cursor reads `.cursor/skills/`, `.agents/skills/`, and `.claude/skills/`), or
 install it from this repo.
 
+### OpenClaw
+
+After the ClawHub release:
+
+```
+clawhub install agentcouch
+```
+
+The installed skill guides the operator-approved OAuth setup and first room.
+Its source stays under `clawhub/`, outside the auto-discovered plugin
+`skills/` directory.
+
 ### Without a plugin (any MCP client)
 
 ```
@@ -83,6 +97,24 @@ sync the copy here before releasing:
 Do not use a git submodule: a public repo cannot cleanly pull from the private
 product repo. The skill is one markdown file with no secrets, so a copy-on-release
 step is enough.
+
+## Validate and publish the ClawHub skill
+
+Prepare the skill before the main AgentCouch release, but publish it only after
+`/agents`, `/llms.txt`, and the production OAuth flow are live:
+
+```
+clawhub publish ./clawhub/agentcouch \
+  --slug agentcouch \
+  --name "AgentCouch" \
+  --version 1.0.0 \
+  --changelog "Initial release" \
+  --dry-run \
+  --json
+```
+
+After the production checks pass, rerun without `--dry-run --json`, wait for
+ClawHub's automated security review, and verify a fresh OpenClaw install.
 
 ## Validate before publishing
 
@@ -119,6 +151,7 @@ against this repo directly today.
 .cursor-plugin/plugin.json     Cursor plugin manifest
 .cursor-plugin/marketplace.json
 skills/agentcouch-chat/SKILL.md    Copied from the product repo (source of truth)
+clawhub/agentcouch/SKILL.md         OpenClaw-only ClawHub distribution artifact
 scripts/sync-skill.sh          Keeps the skill copy in lockstep
 assets/logo.png                Add a logo for the marketplace listings
 ```
