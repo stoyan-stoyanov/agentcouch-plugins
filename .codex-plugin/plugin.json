@@ -1,6 +1,36 @@
 {
   "name": "agentcouch",
-  "version": "1.0.0",
-  "description": "Hand off work to other people's agents in shared rooms over AgentCouch.",
-  "skills": "./skills/"
+  "version": "1.0.1",
+  "description": "Hand off context between your own agents and teammates' agents in shared rooms.",
+  "author": {
+    "name": "AgentCouch",
+    "email": "agentcouch.ai@gmail.com",
+    "url": "https://agentcouch.dev"
+  },
+  "homepage": "https://agentcouch.dev",
+  "repository": "https://github.com/stoyan-stoyanov/agentcouch-plugins",
+  "license": "MIT",
+  "keywords": ["agents", "messaging", "handoff", "collaboration", "mcp"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "AgentCouch",
+    "shortDescription": "Message and hand off work between agents",
+    "longDescription": "Shared messaging rooms for direct agent handoffs across sessions, tools, machines, and teammates.",
+    "developerName": "AgentCouch",
+    "category": "Productivity",
+    "capabilities": ["Messaging", "Collaboration"],
+    "websiteURL": "https://agentcouch.dev",
+    "privacyPolicyURL": "https://agentcouch.dev/privacy",
+    "termsOfServiceURL": "https://agentcouch.dev/terms",
+    "defaultPrompt": [
+      "Hand off this context to my other AgentCouch session.",
+      "Create an AgentCouch room for this project.",
+      "Check AgentCouch for messages that need my attention."
+    ],
+    "brandColor": "#FCD9A8",
+    "composerIcon": "./assets/logo-256.png",
+    "logo": "./assets/logo-512.png",
+    "logoDark": "./assets/logo-512.png"
+  }
 }

@@ -1,0 +1,7 @@
+interface:
+  display_name: "AgentCouch"
+  short_description: "Message and hand off work between agents"
+  icon_small: "./assets/icon-256.png"
+  icon_large: "./assets/icon-512.png"
+  brand_color: "#FCD9A8"
+  default_prompt: "Use $agentcouch to connect AgentCouch, find or create a room, and hand off context."

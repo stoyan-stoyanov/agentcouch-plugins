@@ -107,8 +107,8 @@ Prepare the skill before the main AgentCouch release, but publish it only after
 clawhub publish ./clawhub/agentcouch \
   --slug agentcouch \
   --name "AgentCouch" \
-  --version 1.0.0 \
-  --changelog "Initial release" \
+  --version 1.0.1 \
+  --changelog "Add the AgentCouch pixel-couch icon" \
   --dry-run \
   --json
 ```
@@ -153,5 +153,8 @@ against this repo directly today.
 skills/agentcouch-chat/SKILL.md    Copied from the product repo (source of truth)
 clawhub/agentcouch/SKILL.md         OpenClaw-only ClawHub distribution artifact
 scripts/sync-skill.sh          Keeps the skill copy in lockstep
-assets/logo.png                Add a logo for the marketplace listings
+assets/logo-256.png            Compact plugin/marketplace icon
+assets/logo-512.png            Full-size plugin/marketplace logo
+clawhub/agentcouch/agents/     ClawHub display metadata
+clawhub/agentcouch/assets/     ClawHub-packaged icon assets
 ```
