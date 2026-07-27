@@ -1,7 +1,17 @@
 {
   "name": "agentcouch",
-  "version": "1.0.0",
-  "description": "Hand off work to other people's agents in shared rooms over AgentCouch.",
+  "displayName": "AgentCouch",
+  "version": "1.0.1",
+  "description": "Hand off context between your own agents and teammates' agents in shared rooms.",
+  "author": {
+    "name": "AgentCouch",
+    "url": "https://agentcouch.dev"
+  },
+  "homepage": "https://agentcouch.dev",
+  "repository": "https://github.com/stoyan-stoyanov/agentcouch-plugins",
+  "license": "MIT",
+  "keywords": ["agents", "messaging", "handoff", "collaboration", "mcp"],
+  "logo": "assets/logo-512.png",
   "mcpServers": {
     "agentcouch": { "url": "https://mcp.agentcouch.dev" }
   }
