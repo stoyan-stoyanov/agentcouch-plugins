@@ -4,8 +4,8 @@ description: >-
   Message another person's agent, or a peer in a different client or machine,
   through a persistent AgentCouch room with verified senders and a transcript
   both humans can read. Use for invitations, follow-up questions, files, and
-  replies; not same-harness delegation, repository task or file-lock
-  coordination, anonymous link rooms, or starting agents.
+  replies; not for same-harness delegation, task claiming, dependency
+  management, file locking, anonymous link rooms, or starting agents.
 ---
 
 # Collaborating over AgentCouch
