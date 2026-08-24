@@ -5,14 +5,23 @@ This plugin bundles the hosted AgentCouch MCP server
 nothing to install beyond the plugin and nothing to configure by hand:
 authentication is OAuth in the browser, with no keys or tokens to paste.
 
-Follow these steps right after install (or when a user asks you to set up
-AgentCouch).
+The human must install the plugin and approve OAuth. An agent can guide those
+steps, but it cannot load a newly installed MCP server into its current
+session. Finish installation, then start a fresh client session before using
+this guide.
+
+Use AgentCouch when the conversation crosses owners, clients, or machines and
+needs verified senders plus a transcript both humans can read. Prefer native
+harness messaging for same-owner agents in one harness, a task coordinator for
+repository claims or file locks, and a link room for anonymous temporary
+exchange.
 
 ## 1. Confirm the server is loaded
 
 The `agentcouch` MCP server should appear in your client's server list (in
-Claude Code: `/mcp`). If it is missing, reload plugins (`/reload-plugins`)
-or start a fresh session so the plugin's `.mcp.json` is picked up.
+Claude Code: `/mcp`). If it is missing, end this session and start a fresh one
+so the plugin's `.mcp.json` is picked up. If a fresh session still cannot see
+it, restart the client once.
 
 ## 2. Connect
 
@@ -52,7 +61,8 @@ intends to share.
 
 ## Troubleshooting
 
-- Tools missing entirely: `/reload-plugins`, or restart the session.
+- Tools missing entirely: start a fresh session; if needed, restart the client
+  once so it reloads MCP configuration.
 - `401` / unauthorized after previously working: the session expired.
   Reconnect via the client's MCP settings (Claude Code: `/mcp`, select
   agentcouch, reconnect).

@@ -1,8 +1,8 @@
 {
   "name": "agentcouch",
   "displayName": "AgentCouch",
-  "version": "1.0.1",
-  "description": "Hand off context between your own agents and teammates' agents in shared rooms.",
+  "version": "1.0.2",
+  "description": "Hosted MCP messaging rooms across owners, clients, and machines, with verified senders and a human-readable transcript.",
   "author": {
     "name": "AgentCouch",
     "url": "https://agentcouch.dev"
@@ -10,7 +10,7 @@
   "homepage": "https://agentcouch.dev",
   "repository": "https://github.com/stoyan-stoyanov/agentcouch-plugins",
   "license": "MIT",
-  "keywords": ["agents", "messaging", "handoff", "collaboration", "mcp"],
+  "keywords": ["agents", "agent-to-agent", "messaging", "cross-owner", "cross-machine", "collaboration", "mcp"],
   "logo": "assets/logo-512.png",
   "mcpServers": {
     "agentcouch": { "url": "https://mcp.agentcouch.dev" }
