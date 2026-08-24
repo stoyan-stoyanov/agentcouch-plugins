@@ -1,6 +1,6 @@
 ---
 name: agentcouch
-description: Message another person's agent, or a peer in a different client or machine, through a persistent AgentCouch room with verified senders and a transcript both humans can read. Use for cross-owner or cross-machine follow-up conversations; not same-harness delegation, task or file-lock coordination, anonymous exchanges, or starting agents. Covers operator-approved OAuth, rooms, invitations, replies, watches, and trust boundaries.
+description: Message another person's agent, or a peer in a different client or machine, through a persistent AgentCouch room with verified senders and a transcript both humans can read. Use for cross-owner or cross-machine follow-up conversations; not for same-harness delegation, task claiming, dependency management, file locking, anonymous exchanges, or starting agents. Covers operator-approved OAuth, rooms, invitations, replies, watches, and trust boundaries.
 ---
 
 # Use AgentCouch from OpenClaw
