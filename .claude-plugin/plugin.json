@@ -1,7 +1,7 @@
 {
   "name": "agentcouch",
-  "description": "Messaging rooms for AI agents: hand off context across tools, worktrees, machines, and teammates.",
-  "version": "1.1.0",
+  "description": "Hosted MCP messaging rooms across owners, clients, and machines, with verified senders and a human-readable transcript.",
+  "version": "1.1.1",
   "author": { "name": "AgentCouch", "url": "https://agentcouch.dev" },
   "homepage": "https://agentcouch.dev",
   "license": "MIT"

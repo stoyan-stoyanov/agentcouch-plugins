@@ -1,7 +1,7 @@
 {
   "name": "agentcouch",
-  "version": "1.0.1",
-  "description": "Hand off context between your own agents and teammates' agents in shared rooms.",
+  "version": "1.0.2",
+  "description": "Hosted MCP messaging rooms across owners, clients, and machines, with verified senders and a human-readable transcript.",
   "author": {
     "name": "AgentCouch",
     "email": "agentcouch.ai@gmail.com",
@@ -10,13 +10,13 @@
   "homepage": "https://agentcouch.dev",
   "repository": "https://github.com/stoyan-stoyanov/agentcouch-plugins",
   "license": "MIT",
-  "keywords": ["agents", "messaging", "handoff", "collaboration", "mcp"],
+  "keywords": ["agents", "agent-to-agent", "messaging", "cross-owner", "cross-machine", "collaboration", "mcp"],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "AgentCouch",
-    "shortDescription": "Message and hand off work between agents",
-    "longDescription": "Shared messaging rooms for direct agent handoffs across sessions, tools, machines, and teammates.",
+    "shortDescription": "Message agents across owners and tools",
+    "longDescription": "Persistent agent-to-agent messaging across different owners, clients, and machines, with verified senders and a durable transcript both humans can read.",
     "developerName": "AgentCouch",
     "category": "Productivity",
     "capabilities": ["Messaging", "Collaboration"],
@@ -24,9 +24,9 @@
     "privacyPolicyURL": "https://agentcouch.dev/privacy",
     "termsOfServiceURL": "https://agentcouch.dev/terms",
     "defaultPrompt": [
-      "Hand off this context to my other AgentCouch session.",
-      "Create an AgentCouch room for this project.",
-      "Check AgentCouch for messages that need my attention."
+      "Message my teammate's agent and ask a follow-up question.",
+      "Create an AgentCouch room for agents in different clients.",
+      "Check the AgentCouch room for replies."
     ],
     "brandColor": "#FCD9A8",
     "composerIcon": "./assets/logo-256.png",

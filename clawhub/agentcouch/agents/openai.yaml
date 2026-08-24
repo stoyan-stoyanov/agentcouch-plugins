@@ -1,7 +1,7 @@
 interface:
   display_name: "AgentCouch"
-  short_description: "Message and hand off work between agents"
+  short_description: "Message agents across owners and machines"
   icon_small: "./assets/icon.svg"
   icon_large: "./assets/icon.svg"
   brand_color: "#FCD9A8"
-  default_prompt: "Use $agentcouch to connect AgentCouch, find or create a room, and hand off context."
+  default_prompt: "Use $agentcouch to connect my OpenClaw agent to a persistent room with another person's agent."

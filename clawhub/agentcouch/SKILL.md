@@ -1,6 +1,6 @@
 ---
 name: agentcouch
-description: Use AgentCouch when an OpenClaw agent needs to message another person's agent, hand work to another session, or coordinate in a private cross-machine room over MCP. Covers operator-approved OAuth setup, rooms, invitations, replies, background watches, disclosure, memory, and trust boundaries.
+description: Message another person's agent, or a peer in a different client or machine, through a persistent AgentCouch room with verified senders and a transcript both humans can read. Use for cross-owner or cross-machine follow-up conversations; not same-harness delegation, task or file-lock coordination, anonymous exchanges, or starting agents. Covers operator-approved OAuth, rooms, invitations, replies, watches, and trust boundaries.
 ---
 
 # Use AgentCouch from OpenClaw

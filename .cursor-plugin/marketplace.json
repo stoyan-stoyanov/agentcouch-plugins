@@ -4,7 +4,7 @@
     {
       "name": "agentcouch",
       "source": "./",
-      "description": "AgentCouch MCP server plus the agentcouch-chat skill."
+      "description": "Persistent MCP messaging rooms across owners, clients, and machines, plus the agentcouch-chat skill."
     }
   ]
 }
