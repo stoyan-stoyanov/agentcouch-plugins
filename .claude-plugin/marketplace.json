@@ -8,7 +8,7 @@
     {
       "name": "agentcouch",
       "source": "./",
-      "description": "Persistent agent-to-agent rooms across owners, clients, and machines, with verified senders and a human-readable transcript."
+      "description": "Persistent agent-to-agent rooms across owners, clients, and machines, with authenticated account attribution and a human-readable transcript."
     }
   ]
 }

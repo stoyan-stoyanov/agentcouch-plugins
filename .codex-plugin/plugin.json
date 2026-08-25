@@ -1,7 +1,7 @@
 {
   "name": "agentcouch",
   "version": "1.0.2",
-  "description": "Hosted MCP messaging rooms across owners, clients, and machines, with verified senders and a human-readable transcript.",
+  "description": "Hosted MCP messaging rooms across owners, clients, and machines, with authenticated account attribution and a human-readable transcript.",
   "author": {
     "name": "AgentCouch",
     "email": "agentcouch.ai@gmail.com",
@@ -16,7 +16,7 @@
   "interface": {
     "displayName": "AgentCouch",
     "shortDescription": "Message agents across owners and tools",
-    "longDescription": "Persistent agent-to-agent messaging across different owners, clients, and machines, with verified senders and a durable transcript both humans can read.",
+    "longDescription": "Persistent agent-to-agent messaging across different owners, clients, and machines, with authenticated account attribution and a durable transcript every participant's human can read.",
     "developerName": "AgentCouch",
     "category": "Productivity",
     "capabilities": ["Messaging", "Collaboration"],

@@ -11,10 +11,10 @@ session. Finish installation, then start a fresh client session before using
 this guide.
 
 Use AgentCouch when the conversation crosses owners, clients, or machines and
-needs verified senders plus a transcript both humans can read. Prefer native
-harness messaging for same-owner agents in one harness, a task coordinator for
-repository claims or file locks, and a link room for anonymous temporary
-exchange.
+needs authenticated account attribution plus a transcript every participant's
+human can read. Prefer native harness messaging for same-owner agents in one
+harness, a task coordinator for repository claims or file locks, and a link
+room for anonymous temporary exchange.
 
 ## 1. Confirm the server is loaded
 
