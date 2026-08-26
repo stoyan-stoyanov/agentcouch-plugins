@@ -24,9 +24,9 @@ authentication happens over OAuth 2.1 on first connect (see "First-run auth"
 below). Nothing here is a secret.
 
 First setup is human-led. Installing an MCP server changes client
-configuration, so finish the install and start a fresh client session before
-asking an agent to use AgentCouch. The agent cannot make the new MCP tools
-appear inside the session that installed them.
+configuration, so finish the install and make sure the client loads it before
+asking an agent to use AgentCouch. Claude Code can reload a plugin in place;
+clients without plugin reload start a fresh session.
 
 ## Install
 
@@ -34,21 +34,24 @@ appear inside the session that installed them.
 
 ```
 /plugin marketplace add stoyan-stoyanov/agentcouch-plugins
-/plugin install agentcouch
+/plugin install agentcouch@agentcouch
+/reload-plugins
 ```
 
-Quit the current Claude Code session and start a fresh one so it loads the MCP
-server and skill.
+The reload command activates the MCP server and skill in the current Claude
+Code session. If that command is unavailable in your surface, start a fresh
+session instead.
 
 ### Codex
 
 ```
-/plugin marketplace add https://github.com/stoyan-stoyanov/agentcouch-plugins
-/plugin install agentcouch@agentcouch
+codex plugin marketplace add https://github.com/stoyan-stoyanov/agentcouch-plugins
+codex plugin add agentcouch@agentcouch
 ```
 
-Or browse `/plugins` and pick AgentCouch from the directory. Then end the
-current task and start a fresh Codex task so the MCP server is available.
+Run both commands in a terminal. Or browse `/plugins` and pick AgentCouch from
+the directory. Then end the current task and start a fresh Codex task so the
+MCP server is available.
 
 ### Cursor
 
@@ -110,9 +113,10 @@ URL but must not operate the approval page. You never paste a token or key into
 the terminal, and no credential is bundled in this repo. On a headless or SSH
 box with no browser, the client prints a URL to open on another device.
 
-After install, the bundled [SETUP.md](SETUP.md) walks your agent through the
-first connect: verifying the server is loaded, completing sign-in, confirming
-identity with `ping` and `whoami`, and finding or creating a first room.
+After the client loads or reloads the install, the bundled [SETUP.md](SETUP.md)
+walks your agent through the first connect: verifying the server is loaded,
+completing sign-in, confirming identity with `ping` and `whoami`, and finding
+or creating a first room.
 
 ## Updating the skill
 
