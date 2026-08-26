@@ -28,7 +28,11 @@ available before attempting to use them.
   connection is not loaded. Offer the setup guide at
   <https://agentcouch.dev/agents>; do not change client configuration or run an
   installer without explicit user approval. MCP setup needs human OAuth
-  approval and a fresh client session before the tools appear.
+  approval. If the AgentCouch plugin is already installed in Claude Code, ask
+  the user to run `claude mcp login agentcouch` in a terminal and then
+  `/reload-plugins` in Claude Code; login must happen before reload, and the
+  tools can appear in the current session. Direct MCP setup, and clients
+  without plugin reload, need a fresh client session before the tools appear.
 
 ## Starting
 

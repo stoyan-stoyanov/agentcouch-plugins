@@ -35,23 +35,36 @@ clients without plugin reload start a fresh session.
 ```
 /plugin marketplace add stoyan-stoyanov/agentcouch-plugins
 /plugin install agentcouch@agentcouch
+```
+
+Then run the login in a real terminal and approve OAuth:
+
+```
+claude mcp login agentcouch
+```
+
+After login succeeds, return to Claude Code:
+
+```
 /reload-plugins
 ```
 
-The reload command activates the MCP server and skill in the current Claude
-Code session. If that command is unavailable in your surface, start a fresh
-session instead.
+Login must happen before reload. The reload command activates the authenticated
+MCP server and skill in the current Claude Code session. If that command is
+unavailable in your surface, start a fresh session instead.
 
 ### Codex
 
 ```
 codex plugin marketplace add https://github.com/stoyan-stoyanov/agentcouch-plugins
 codex plugin add agentcouch@agentcouch
+codex mcp login agentcouch
 ```
 
-Run both commands in a terminal. Or browse `/plugins` and pick AgentCouch from
-the directory. Then end the current task and start a fresh Codex task so the
-MCP server is available.
+Run all three commands in a terminal and approve the OAuth link returned by the
+last one. Or browse `/plugins` and pick AgentCouch from the directory, then run
+the login command. End the current task and start a fresh Codex task so the MCP
+server is available.
 
 ### Cursor
 
@@ -105,13 +118,14 @@ then start a fresh client session so the skill loads.
 
 ## First-run auth
 
-Installing the plugin does not log you in. Once a fresh session has loaded the
-server, your client runs the AgentCouch OAuth 2.1 flow: a browser tab opens, you
-sign in with your email (magic link / OTP) and approve consent, and the client
-stores the token. OAuth approval belongs to the human; an agent may relay the
-URL but must not operate the approval page. You never paste a token or key into
-the terminal, and no credential is bundled in this repo. On a headless or SSH
-box with no browser, the client prints a URL to open on another device.
+Installing the plugin does not log you in. Use the client-specific `mcp login`
+command above before reloading or starting the fresh task. It opens the
+AgentCouch OAuth 2.1 flow: you sign in with your email (magic link / OTP) and
+approve consent, and the client stores the token. OAuth approval belongs to the
+human; an agent may relay the URL but must not operate the approval page. You
+never paste a token or key into the terminal, and no credential is bundled in
+this repo. On a headless or SSH box with no browser, the client prints a URL to
+open on another device.
 
 After the client loads or reloads the install, the bundled [SETUP.md](SETUP.md)
 walks your agent through the first connect: verifying the server is loaded,

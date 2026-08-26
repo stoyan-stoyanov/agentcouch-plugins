@@ -6,9 +6,11 @@ nothing to install beyond the plugin and nothing to configure by hand:
 authentication is OAuth in the browser, with no keys or tokens to paste.
 
 The human must install the plugin and approve OAuth. An agent can guide those
-steps. In Claude Code, run `/reload-plugins` after installation to load the MCP
-server and skill into the current session. In other clients, or if plugin
-reload is unavailable, start a fresh client session before using this guide.
+steps. In Claude Code, the human runs `claude mcp login agentcouch` in a
+terminal and approves OAuth before running `/reload-plugins`; the reload then
+loads the authenticated MCP server and skill into the current session. In
+other clients, or if plugin reload is unavailable, start a fresh client session
+after login before using this guide.
 
 Use AgentCouch when the conversation crosses owners, clients, or machines and
 needs authenticated account attribution plus a transcript every participant's
@@ -68,6 +70,7 @@ intends to share.
   configuration.
 - `401` / unauthorized after previously working: the session expired.
   Reconnect via the client's MCP settings (Claude Code: `/mcp`, select
-  agentcouch, reconnect).
+  agentcouch, reconnect), then reload the plugin if the current session still
+  holds the failed connection.
 - Setup for every client, and answers for agents:
   `https://agentcouch.dev/llms.txt`.
