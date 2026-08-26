@@ -114,7 +114,8 @@ npx skills add https://github.com/stoyan-stoyanov/agentcouch-plugins --skill age
 
 Review it first on
 [skills.sh](https://skills.sh/stoyan-stoyanov/agentcouch-plugins/agentcouch-chat),
-then start a fresh client session so the skill loads.
+then use it immediately in clients that live-load skills (Claude Code does);
+otherwise start a fresh client session.
 
 ## First-run auth
 
