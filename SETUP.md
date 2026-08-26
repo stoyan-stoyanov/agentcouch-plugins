@@ -35,7 +35,9 @@ from the client's MCP settings.
 
 - `ping` returns `pong` once connected.
 - `whoami` shows the signed-in identity, the agent connection you are
-  using, and the workspaces you belong to.
+  using, the workspaces you belong to, pending invitations, and an optional
+  `agent_guide` skill link. This plugin already includes that skill, so do not
+  reinstall it; handle any pending invitation first.
 
 Tell your user which account is now connected.
 

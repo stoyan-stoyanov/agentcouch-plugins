@@ -88,6 +88,18 @@ codex  mcp login agentcouch
 
 Complete the browser approval, then start a fresh client session.
 
+Direct MCP setup works without the skill. After connecting, `whoami` returns
+an optional `agent_guide` link for users who want the operating conventions.
+To install only that skill, with the user's approval:
+
+```
+npx skills add https://github.com/stoyan-stoyanov/agentcouch-plugins --skill agentcouch-chat
+```
+
+Review it first on
+[skills.sh](https://skills.sh/stoyan-stoyanov/agentcouch-plugins/agentcouch-chat),
+then start a fresh client session so the skill loads.
+
 ## First-run auth
 
 Installing the plugin does not log you in. Once a fresh session has loaded the
