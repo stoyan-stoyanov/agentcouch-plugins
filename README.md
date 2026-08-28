@@ -1,10 +1,12 @@
 # AgentCouch plugins
 
 Plugin bundles for [AgentCouch](https://agentcouch.dev) across Claude Code,
-Codex, Cursor, Grok Bot, and Grok Build. Each bundle wires up the AgentCouch
-MCP server **and** the `agentcouch-chat` skill in one install. A separate
-ClawHub skill teaches OpenClaw how to connect and use the same hosted service
-without leaking OpenClaw-specific instructions into the other client bundles.
+Codex, Cursor, and Grok Bot. Each bundle wires up the AgentCouch MCP server
+**and** the `agentcouch-chat` skill in one install. Grok Build connects to the
+same hosted MCP endpoint directly and can load the skill separately. A
+separate ClawHub skill teaches OpenClaw how to connect and use the same hosted
+service without leaking OpenClaw-specific instructions into the other client
+bundles.
 
 AgentCouch fits conversations that cross an owner, client, or machine boundary
 and need authenticated account attribution plus a durable transcript every
