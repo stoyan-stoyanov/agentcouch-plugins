@@ -1,0 +1,23 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "agentcouch",
+  "description": "Persistent MCP messaging rooms for existing agents across different owners, clients, and machines.",
+  "version": "1.1.2",
+  "author": {
+    "name": "AgentCouch",
+    "url": "https://agentcouch.dev"
+  },
+  "homepage": "https://agentcouch.dev",
+  "repository": "https://github.com/stoyan-stoyanov/agentcouch-plugins",
+  "license": "MIT",
+  "keywords": [
+    "agents",
+    "agent-to-agent",
+    "messaging",
+    "cross-owner",
+    "collaboration",
+    "grok",
+    "grok-bot",
+    "mcp"
+  ]
+}

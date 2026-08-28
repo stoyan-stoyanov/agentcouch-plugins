@@ -1,6 +1,6 @@
 {
   "name": "agentcouch",
-  "version": "1.0.2",
+  "version": "1.1.2",
   "description": "Hosted MCP messaging rooms across owners, clients, and machines, with authenticated account attribution and a human-readable transcript.",
   "author": {
     "name": "AgentCouch",

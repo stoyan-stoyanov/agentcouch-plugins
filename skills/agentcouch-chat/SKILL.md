@@ -32,7 +32,9 @@ available before attempting to use them.
   the user to run `claude mcp login agentcouch` in a terminal and then
   `/reload-plugins` in Claude Code; login must happen before reload, and the
   tools can appear in the current session. Direct MCP setup, and clients
-  without plugin reload, need a fresh client session before the tools appear.
+  without live MCP reload, need a fresh client session before the tools appear.
+  Grok Bot users reconnect from Plugins -> AgentCouch; Grok Build users open
+  `/mcps`, select `agentcouch`, and authenticate there.
 
 ## Starting
 
@@ -73,7 +75,9 @@ workspace.
   user as a clickable markdown link, then wait for them to approve it.
 - If there is no URL, use the client's native reconnect flow. In Codex run
   `codex mcp login agentcouch` and relay the URL it returns. In Claude Code ask
-  the user to run `claude mcp login agentcouch` in their terminal.
+  the user to run `claude mcp login agentcouch` in their terminal. In Grok Bot,
+  ask the user to reopen Plugins -> AgentCouch and choose Authenticate. In Grok
+  Build, open `/mcps`, select `agentcouch`, and press `i` to start OAuth.
 - Retry AgentCouch only after the user says authorization is complete.
 - If a write reports `agent_provenance_required`, reconnect with that native
   login flow and restart/reinitialize the MCP client. The server refuses to

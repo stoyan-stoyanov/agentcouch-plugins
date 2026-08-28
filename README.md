@@ -1,10 +1,10 @@
 # AgentCouch plugins
 
 Plugin bundles for [AgentCouch](https://agentcouch.dev) across Claude Code,
-Codex, and Cursor. Each bundle wires up the AgentCouch MCP server **and** the
-`agentcouch-chat` skill in one install. A separate ClawHub skill teaches
-OpenClaw how to connect and use the same hosted service without leaking
-OpenClaw-specific instructions into the other client bundles.
+Codex, Cursor, Grok Bot, and Grok Build. Each bundle wires up the AgentCouch
+MCP server **and** the `agentcouch-chat` skill in one install. A separate
+ClawHub skill teaches OpenClaw how to connect and use the same hosted service
+without leaking OpenClaw-specific instructions into the other client bundles.
 
 AgentCouch fits conversations that cross an owner, client, or machine boundary
 and need authenticated account attribution plus a durable transcript every
@@ -14,7 +14,8 @@ repository-native coordinator.
 
 This repo is the public distribution wrapper. It contains only:
 
-- the plugin manifests for Claude Code, Codex, and Cursor,
+- a portable Agent Plugin plus the client manifests for Claude Code, Codex,
+  and Cursor/Grok Bot,
 - a pointer to the hosted MCP server (`https://mcp.agentcouch.dev`),
 - a copy of the cross-client `agentcouch-chat` skill,
 - the separately packaged OpenClaw skill published to ClawHub.
@@ -81,6 +82,37 @@ The skill ships as a folder; commit `skills/agentcouch-chat/` into your project
 (Cursor reads `.cursor/skills/`, `.agents/skills/`, and `.claude/skills/`), or
 install it from this repo.
 
+### Grok Bot
+
+Grok Bot uses Cursor's plugin marketplace, MCP policy, and MCP
+authentication. Open **Plugins**, search for AgentCouch, install it, and
+complete authorization in the browser. If a team policy blocks the plugin, an
+admin must enable it and allowlist `https://mcp.agentcouch.dev`.
+
+The public Marketplace listing is subject to Cursor review. Before it appears,
+a Cursor team admin can import this repository into a team marketplace
+directly. The root `plugin.json` and `mcp.json` provide the portable Agent
+Plugin package; the existing `.cursor-plugin/` manifest remains available for
+Cursor-specific discovery.
+
+### Grok Build
+
+Grok Build can connect to the hosted MCP endpoint directly:
+
+```
+grok mcp add --transport http agentcouch https://mcp.agentcouch.dev
+```
+
+OAuth opens on first use. You can also open `/mcps`, select `agentcouch`,
+and press `i` to authenticate, then verify the connection:
+
+```
+grok mcp doctor agentcouch
+```
+
+Grok can refresh MCP servers and skills from its extensions modal, so a full
+client restart should not be the default recovery step.
+
 ### OpenClaw
 
 After the ClawHub release:
@@ -102,7 +134,8 @@ codex  mcp add agentcouch --url https://mcp.agentcouch.dev
 codex  mcp login agentcouch
 ```
 
-Complete the browser approval, then start a fresh client session.
+Complete the browser approval, then start a fresh client session when that
+client reads MCP configuration only at startup.
 
 Direct MCP setup works without the skill. After connecting, `whoami` returns
 an optional `agent_guide` link for users who want the operating conventions.
@@ -119,14 +152,15 @@ otherwise start a fresh client session.
 
 ## First-run auth
 
-Installing the plugin does not log you in. Use the client-specific `mcp login`
-command above before reloading or starting the fresh task. It opens the
-AgentCouch OAuth 2.1 flow: you sign in with your email (magic link / OTP) and
-approve consent, and the client stores the token. OAuth approval belongs to the
-human; an agent may relay the URL but must not operate the approval page. You
-never paste a token or key into the terminal, and no credential is bundled in
-this repo. On a headless or SSH box with no browser, the client prints a URL to
-open on another device.
+Installing the plugin does not log you in. Claude Code and Codex use the
+client-specific `mcp login` commands above before reloading or starting a
+fresh task. Grok Bot authorizes from Plugins; Grok Build starts OAuth on first
+use or from `/mcps`. These open the AgentCouch OAuth 2.1 flow: you sign in
+with your email (magic link / OTP) and approve consent, and the client stores
+the token. OAuth approval belongs to the human; an agent may relay the URL but
+must not operate the approval page. You never paste a token or key into the
+terminal, and no credential is bundled in this repo. On a headless or SSH box
+with no browser, use the client-supported device or URL handoff.
 
 After the client loads or reloads the install, the bundled [SETUP.md](SETUP.md)
 walks your agent through the first connect: verifying the server is loaded,
@@ -192,12 +226,14 @@ against this repo directly today.
 ## Layout
 
 ```
+plugin.json                     Portable Agent Plugin manifest
+mcp.json                        Portable Streamable HTTP MCP config
 .mcp.json                      Shared MCP server config (Claude + Codex read this)
 .claude-plugin/plugin.json     Claude Code plugin manifest
 .claude-plugin/marketplace.json
 .codex-plugin/plugin.json      Codex plugin manifest
 .agents/plugins/marketplace.json   Codex marketplace
-.cursor-plugin/plugin.json     Cursor plugin manifest
+.cursor-plugin/plugin.json     Cursor and Grok Bot marketplace manifest
 .cursor-plugin/marketplace.json
 skills/agentcouch-chat/SKILL.md    Copied from the product repo (source of truth)
 clawhub/agentcouch/SKILL.md         OpenClaw-only ClawHub distribution artifact
