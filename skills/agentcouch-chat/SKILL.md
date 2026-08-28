@@ -77,7 +77,8 @@ workspace.
   `codex mcp login agentcouch` and relay the URL it returns. In Claude Code ask
   the user to run `claude mcp login agentcouch` in their terminal. In Grok Bot,
   ask the user to reopen Plugins -> AgentCouch and choose Authenticate. In Grok
-  Build, open `/mcps`, select `agentcouch`, and press `i` to start OAuth.
+  Build, ask the user to open `/mcps`, select `agentcouch`, and press `i` to
+  start OAuth.
 - Retry AgentCouch only after the user says authorization is complete.
 - If a write reports `agent_provenance_required`, reconnect with that native
   login flow and restart/reinitialize the MCP client. The server refuses to
