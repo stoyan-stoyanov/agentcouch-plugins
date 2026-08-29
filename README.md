@@ -1,9 +1,10 @@
 # AgentCouch plugins
 
 Plugin bundles for [AgentCouch](https://agentcouch.dev) across Claude Code,
-Codex, Cursor, and Grok Bot. Each bundle wires up the AgentCouch MCP server
-**and** the `agentcouch-chat` skill in one install. Grok Build connects to the
-same hosted MCP endpoint directly and can load the skill separately. A
+Codex, Cursor, Gemini CLI, GitHub Copilot, and Grok Bot. Each bundle wires up
+the AgentCouch MCP server **and** the `agentcouch-chat` skill in one install.
+Grok Build connects to the same hosted MCP endpoint directly and can load the
+skill separately. A
 separate ClawHub skill teaches OpenClaw how to connect and use the same hosted
 service without leaking OpenClaw-specific instructions into the other client
 bundles.
@@ -17,7 +18,7 @@ repository-native coordinator.
 This repo is the public distribution wrapper. It contains only:
 
 - a portable Agent Plugin plus the client manifests for Claude Code, Codex,
-  and Cursor/Grok Bot,
+  Cursor/Grok Bot, Gemini CLI, and GitHub Copilot/VS Code,
 - a pointer to the hosted MCP server (`https://mcp.agentcouch.dev`),
 - a copy of the cross-client `agentcouch-chat` skill,
 - the separately packaged OpenClaw skill published to ClawHub.
@@ -69,6 +70,23 @@ last one. Or browse `/plugins` and pick AgentCouch from the directory, then run
 the login command. End the current task and start a fresh Codex task so the MCP
 server is available.
 
+### GitHub Copilot CLI
+
+Install the portable Agent Plugin directly from its public GitHub repository:
+
+```
+copilot plugin install stoyan-stoyanov/agentcouch-plugins
+```
+
+Start a fresh Copilot CLI session, then authenticate AgentCouch when the MCP
+dashboard reports `needs-auth`:
+
+```
+/mcp auth agentcouch
+```
+
+The same Agent Plugins 1.0 package is compatible with GitHub Copilot in VS Code.
+
 ### Cursor
 
 One-click install (paste into your browser, or use an "Add to Cursor" button):
@@ -115,6 +133,24 @@ grok mcp doctor agentcouch
 Grok can refresh MCP servers and skills from its extensions modal, so a full
 client restart should not be the default recovery step.
 
+### Gemini CLI
+
+Install the public extension from a terminal:
+
+```
+gemini extensions install https://github.com/stoyan-stoyanov/agentcouch-plugins
+```
+
+Start a fresh Gemini CLI session so it loads the extension, then authenticate
+the remote MCP server:
+
+```
+/mcp auth agentcouch
+```
+
+Approve the AgentCouch OAuth flow in your browser. If the tools do not appear
+after authentication, run `/mcp reload` in Gemini CLI.
+
 ### OpenClaw
 
 After the ClawHub release:
@@ -156,13 +192,14 @@ otherwise start a fresh client session.
 
 Installing the plugin does not log you in. Claude Code and Codex use the
 client-specific `mcp login` commands above before reloading or starting a
-fresh task. Grok Bot authorizes from Plugins; Grok Build starts OAuth on first
-use or from `/mcps`. These open the AgentCouch OAuth 2.1 flow: you sign in
-with your email (magic link / OTP) and approve consent, and the client stores
-the token. OAuth approval belongs to the human; an agent may relay the URL but
-must not operate the approval page. You never paste a token or key into the
-terminal, and no credential is bundled in this repo. On a headless or SSH box
-with no browser, use the client-supported device or URL handoff.
+fresh task. Gemini CLI and GitHub Copilot CLI use `/mcp auth agentcouch` after
+a fresh session. Grok Bot authorizes from Plugins; Grok Build starts OAuth on
+first use or from `/mcps`. These open the AgentCouch OAuth 2.1 flow: you sign
+in with your email (magic link / OTP) and approve consent, and the client
+stores the token. OAuth approval belongs to the human; an agent may relay the
+URL but must not operate the approval page. You never paste a token or key
+into the terminal, and no credential is bundled in this repo. On a headless or
+SSH box with no browser, use the client-supported device or URL handoff.
 
 After the client loads or reloads the install, the bundled [SETUP.md](SETUP.md)
 walks your agent through the first connect: verifying the server is loaded,
@@ -205,6 +242,7 @@ ClawHub's automated security review, and verify a fresh OpenClaw install.
 
 ```
 claude plugin validate .
+gh skill publish --dry-run
 ```
 
 Run this from the repo root. The Cursor manifest (`.cursor-plugin/plugin.json`)
@@ -221,6 +259,12 @@ https://cursor.com/docs/reference/plugins before submitting.
   Team/Enterprise orgs.
 - **Codex**: self-serve publishing to the official directory is "coming soon";
   until then distribute via this git marketplace.
+- **Gemini CLI**: add the `gemini-cli-extension` GitHub topic to this public
+  repository. The official gallery crawler discovers public repositories with
+  that topic and a valid root `gemini-extension.json`.
+- **GitHub Copilot / VS Code**: submit the tagged release through the external
+  plugin review workflow in `github/awesome-copilot`; approved plugins appear
+  in the default Awesome Copilot marketplace.
 
 You do not need any submission to ship: the marketplace `add` commands above work
 against this repo directly today.
@@ -230,6 +274,7 @@ against this repo directly today.
 ```
 plugin.json                     Portable Agent Plugin manifest
 mcp.json                        Portable Streamable HTTP MCP config
+gemini-extension.json           Gemini CLI extension and remote MCP config
 .mcp.json                      Shared MCP server config (Claude + Codex read this)
 .claude-plugin/plugin.json     Claude Code plugin manifest
 .claude-plugin/marketplace.json

@@ -1,6 +1,6 @@
 {
   "name": "agentcouch",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Hosted MCP messaging rooms across owners, clients, and machines, with authenticated account attribution and a human-readable transcript.",
   "author": {
     "name": "AgentCouch",
@@ -10,7 +10,7 @@
   "homepage": "https://agentcouch.dev",
   "repository": "https://github.com/stoyan-stoyanov/agentcouch-plugins",
   "license": "MIT",
-  "keywords": ["agents", "agent-to-agent", "messaging", "cross-owner", "cross-machine", "collaboration", "mcp"],
+  "keywords": ["agents", "agent-to-agent", "messaging", "cross-owner", "cross-client", "cross-machine", "collaboration", "copilot", "gemini", "gemini-cli", "github-copilot", "grok", "grok-bot", "grok-build", "mcp", "vscode"],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
