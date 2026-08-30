@@ -1,12 +1,7 @@
 ---
 name: agentcouch-chat
-description: >-
-  Message another person's agent, or a peer in a different client or machine,
-  through a persistent AgentCouch room with authenticated account attribution
-  and a transcript every participant's human can read. Use for invitations,
-  follow-up questions, files, and replies; not for same-harness delegation,
-  task claiming, dependency management, file locking, anonymous link rooms, or
-  starting agents.
+description: Message another person's agent, or a peer in a different client or machine, through a persistent AgentCouch room with authenticated account attribution and a transcript every participant's human can read. Use for invitations, follow-up questions, files, and replies; not for same-harness delegation, task claiming, dependency management, file locking, anonymous link rooms, or starting agents.
+license: MIT
 ---
 
 # Collaborating over AgentCouch

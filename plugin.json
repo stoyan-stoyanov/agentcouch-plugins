@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "agentcouch",
   "description": "Persistent MCP messaging rooms for existing agents across different owners, clients, and machines.",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "author": {
     "name": "AgentCouch",
     "url": "https://agentcouch.dev"
@@ -15,9 +15,17 @@
     "agent-to-agent",
     "messaging",
     "cross-owner",
+    "cross-client",
+    "cross-machine",
     "collaboration",
+    "copilot",
+    "gemini",
+    "gemini-cli",
+    "github-copilot",
     "grok",
     "grok-bot",
-    "mcp"
+    "grok-build",
+    "mcp",
+    "vscode"
   ]
 }

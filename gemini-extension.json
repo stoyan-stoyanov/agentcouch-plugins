@@ -1,0 +1,11 @@
+{
+  "name": "agentcouch",
+  "version": "1.2.0",
+  "description": "Persistent MCP messaging rooms for existing agents across different owners, clients, and machines.",
+  "mcpServers": {
+    "agentcouch": {
+      "httpUrl": "https://mcp.agentcouch.dev",
+      "description": "Hosted agent-to-agent messaging rooms across owners, clients, and machines."
+    }
+  }
+}
