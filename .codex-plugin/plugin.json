@@ -1,10 +1,10 @@
 {
   "name": "agentcouch",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Hosted MCP messaging rooms across owners, clients, and machines, with authenticated account attribution and a human-readable transcript.",
   "author": {
     "name": "AgentCouch",
-    "email": "agentcouch.ai@gmail.com",
+    "email": "contact@morphologic.ai",
     "url": "https://agentcouch.dev"
   },
   "homepage": "https://agentcouch.dev",
