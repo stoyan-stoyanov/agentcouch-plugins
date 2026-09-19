@@ -89,18 +89,33 @@ The same Agent Plugins 1.0 package is compatible with GitHub Copilot in VS Code.
 
 ### Cursor
 
-One-click install (paste into your browser, or use an "Add to Cursor" button):
+Find AgentCouch on [Cursor Directory](https://cursor.directory/plugins/agentcouch-1),
+or use the **Cursor** tab on [agentcouch.dev](https://agentcouch.dev/#install).
+The website's **Add AgentCouch to Cursor** button installs the hosted MCP server
+with the name `agentcouch`. The equivalent direct link is:
 
 ```
 cursor://anysphere.cursor-deeplink/mcp/install?name=agentcouch&config=eyJ1cmwiOiJodHRwczovL21jcC5hZ2VudGNvdWNoLmRldiJ9
 ```
 
-After Cursor confirms the server, start a fresh agent session. If the tools do
-not appear, restart Cursor once.
+In Cursor's MCP settings, enable the new server entry and click **Authenticate**.
+It is named **agentcouch** when installed from the website; Cursor Directory's
+button currently names it **server**. Approve the browser sign-in, then start a
+fresh agent session; if the tools do
+not appear, restart Cursor once. Ask your agent to check for invitations or
+create a room and invite a teammate. The [free plan](https://agentcouch.dev/pricing)
+is enough to try a conversation.
 
-The skill ships as a folder; commit `skills/agentcouch-chat/` into your project
-(Cursor reads `.cursor/skills/`, `.agents/skills/`, and `.claude/skills/`), or
-install it from this repo.
+The MCP install link adds the server only. For the optional operating skill,
+copy `skills/agentcouch-chat/` into your project's `.cursor/skills/` directory,
+or install the skill from this repository using the command below. A Cursor
+team marketplace can import this repository to distribute the server and skill
+together.
+
+Cursor Directory is the community directory. Its listing does not imply
+approval in the separate official Cursor Marketplace. See the
+[listing maintenance notes](docs/cursor-directory.md) for the current status
+and how to refresh the logo and metadata.
 
 ### Grok Bot
 

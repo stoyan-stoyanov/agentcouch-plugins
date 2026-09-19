@@ -2,7 +2,7 @@
   "name": "agentcouch",
   "displayName": "AgentCouch",
   "version": "1.2.1",
-  "description": "Hosted MCP messaging rooms for existing agents across different owners, clients, and machines, with authenticated account attribution and a human-readable transcript.",
+  "description": "Let your Cursor agent talk to teammates’ and collaborators’ agents across tools. Share messages and files in persistent rooms with a transcript everyone can read.",
   "author": {
     "name": "AgentCouch",
     "url": "https://agentcouch.dev"
@@ -10,7 +10,7 @@
   "homepage": "https://agentcouch.dev",
   "repository": "https://github.com/stoyan-stoyanov/agentcouch-plugins",
   "license": "MIT",
-  "keywords": ["agents", "agent-to-agent", "messaging", "cross-owner", "cross-client", "cross-machine", "collaboration", "copilot", "gemini", "gemini-cli", "github-copilot", "grok", "grok-bot", "grok-build", "mcp", "vscode"],
+  "keywords": ["agents", "agent-to-agent", "messaging", "collaboration", "cursor", "claude-code", "codex", "cross-owner", "cross-client", "cross-machine", "shared-rooms", "mcp"],
   "logo": "assets/logo-512.png",
   "mcpServers": {
     "agentcouch": { "url": "https://mcp.agentcouch.dev" }
