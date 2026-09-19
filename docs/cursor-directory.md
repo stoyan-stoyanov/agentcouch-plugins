@@ -15,6 +15,10 @@ Last checked: September 19, 2026.
   project records. The [publisher portal](https://cursor.com/marketplace/publish)
   required sign-in when checked, so private application status was not verified.
   Do not describe the community listing as official Marketplace approval.
+- Grok Bot: the owner reports an installed `agentcouch` entry with plugin ID
+  `29533994`, an old description, and no icon. Its source repository, imported
+  revision, marketplace scope, and publication status have not been verified.
+  The Cursor Directory edit below does not update that entry.
 
 ## September 19 refresh
 
@@ -47,8 +51,10 @@ skill content were preserved.
 ## Refreshing the listing
 
 1. Keep the descriptions in `.cursor-plugin/plugin.json` and
-   `.cursor-plugin/marketplace.json` aligned. The marketplace entry can override
-   the plugin manifest during import.
+   `.cursor-plugin/marketplace.json` aligned. Cursor's documented resolution
+   merges them, with the per-plugin manifest taking precedence. Keep the
+   portable root `plugin.json` description aligned too, using client-neutral
+   wording.
 2. Edit the existing listing, rather than creating another entry. Keep the
    locked GitHub source URL and the MCP endpoint `https://mcp.agentcouch.dev`.
 3. Upload `assets/logo-512.png` if the directory's imported GitHub image fails.
@@ -66,6 +72,27 @@ giving setup instructions that refer to the server by name.
 The official Marketplace requires a separate publisher application and
 acceptance of its publisher terms. Any official submission should accurately
 disclose the hosted service, OAuth sign-in, and Free/Pro pricing.
+
+## Grok Bot / Cursor follow-up
+
+Before treating a repository change as published, identify plugin `29533994`
+in the signed-in dashboard and verify its source and tracked revision. Public
+Cursor Marketplace search returned no result for `agentcouch` on September 19;
+that does not establish whether an account-specific or team entry exists.
+
+The portable root manifest and Cursor manifests are separate metadata sources.
+The root manifest now uses the refreshed description without the word
+"Cursor". The Cursor manifest already references the committed
+`assets/logo-512.png`. The [portable manifest schema](https://agent-plugins.org/schemas/1.0.0/plugin.schema.json)
+has no standard `logo` field; do not add an unsupported field to guess at a
+client's branding behavior.
+
+For an existing team marketplace, Cursor documents a **Refresh** action to
+re-index the tracked repository. Official public Marketplace updates are
+reviewed before publication. Determine which applies to the existing entry
+before refreshing or submitting, and verify the actual listing's description
+and rendered image afterward. See [Cursor plugin maintenance](https://cursor.com/docs/plugins#keep-plugins-up-to-date)
+and the [Cursor manifest reference](https://cursor.com/docs/reference/plugins#logos).
 
 This refresh changed listing metadata only. It did not deploy AgentCouch or
 create test accounts, rooms, messages, files, local servers, or containers.

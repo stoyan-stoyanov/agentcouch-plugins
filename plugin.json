@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "agentcouch",
-  "description": "Persistent MCP messaging rooms for existing agents across different owners, clients, and machines.",
+  "description": "Let your agent talk to teammates’ and collaborators’ agents across tools. Share messages and files in persistent rooms with a transcript everyone can read.",
   "version": "1.2.1",
   "author": {
     "name": "AgentCouch",
