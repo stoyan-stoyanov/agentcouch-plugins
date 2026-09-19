@@ -11,14 +11,18 @@ Last checked: September 19, 2026.
   merged August 31, 2026. The maintainer confirmed the entry and verified the
   production OAuth challenge. A failed formatting check on that old PR did
   not prevent its merge.
-- Official Cursor Marketplace: no completed submission was found in the
-  project records. The [publisher portal](https://cursor.com/marketplace/publish)
-  required sign-in when checked, so private application status was not verified.
-  Do not describe the community listing as official Marketplace approval.
-- Grok Bot: the owner reports an installed `agentcouch` entry with plugin ID
-  `29533994`, an old description, and no icon. Its source repository, imported
-  revision, marketplace scope, and publication status have not been verified.
-  The Cursor Directory edit below does not update that entry.
+- Official Cursor Marketplace: both public and signed-in searches returned no
+  result for `agentcouch`. The signed-in [publisher portal](https://cursor.com/marketplace/publish)
+  displayed a new publisher application form, with no existing application or
+  publisher management controls. This does not establish the status of other
+  accounts. Do not describe the community listing as official approval.
+- Grok Bot / Cursor account: [installed plugin `29533994`](https://cursor.com/dashboard/plugins?plugin-id=29533994)
+  was verified in the signed-in account. It displays the generic plugin icon
+  and the original description, "Hand off work to other people's agents in
+  shared rooms over AgentCouch." Its details include one `agentcouch-chat` skill
+  and one `agentcouch` MCP server. The page exposes **Uninstall**, but no edit,
+  refresh, source repository, or revision controls. The Cursor Directory edit
+  below does not update this entry.
 
 ## September 19 refresh
 
@@ -75,10 +79,17 @@ disclose the hosted service, OAuth sign-in, and Free/Pro pricing.
 
 ## Grok Bot / Cursor follow-up
 
-Before treating a repository change as published, identify plugin `29533994`
-in the signed-in dashboard and verify its source and tracked revision. Public
-Cursor Marketplace search returned no result for `agentcouch` on September 19;
-that does not establish whether an account-specific or team entry exists.
+The installed plugin's description exactly matches the original Cursor
+manifest at commit `5db16aa` (June 19, version `1.0.0`). Commit `96b2e0c`
+(July 26) replaced that description and added `assets/logo-512.png` to the
+manifest. The observed metadata therefore suggests an old imported copy;
+the UI does not expose its source or revision, so this is not proof of which
+commit it currently runs.
+
+The account's sidebar did not link to Plugins & MCPs, but the documented
+direct URL, `https://cursor.com/dashboard/plugins`, worked. **Add** opens
+the public Marketplace. Do not uninstall the existing plugin to try a refresh
+without first verifying a replacement installation route.
 
 The portable root manifest and Cursor manifests are separate metadata sources.
 The root manifest now uses the refreshed description without the word
@@ -93,6 +104,12 @@ reviewed before publication. Determine which applies to the existing entry
 before refreshing or submitting, and verify the actual listing's description
 and rendered image afterward. See [Cursor plugin maintenance](https://cursor.com/docs/plugins#keep-plugins-up-to-date)
 and the [Cursor manifest reference](https://cursor.com/docs/reference/plugins#logos).
+
+If the existing entry cannot be managed in the app, the publisher portal lists
+`marketplace-publishing@cursor.com` for publishing questions. Include plugin
+ID `29533994`, the source repository, the observed description and missing
+logo, and the desired reviewed revision when requesting an update path.
+No publisher application or support email was submitted during this check.
 
 This refresh changed listing metadata only. It did not deploy AgentCouch or
 create test accounts, rooms, messages, files, local servers, or containers.
