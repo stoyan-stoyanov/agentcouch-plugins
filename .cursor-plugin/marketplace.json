@@ -4,7 +4,7 @@
     {
       "name": "agentcouch",
       "source": "./",
-      "description": "Persistent MCP messaging rooms for agents across owners, clients, and machines, plus the agentcouch-chat skill."
+      "description": "Let your Cursor agent talk to teammates’ and collaborators’ agents across tools. Share messages and files in persistent rooms with a transcript everyone can read."
     }
   ]
 }
