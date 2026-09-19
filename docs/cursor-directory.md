@@ -17,11 +17,11 @@ Last checked: September 19, 2026.
   publisher management controls. This does not establish the status of other
   accounts. Do not describe the community listing as official approval.
 - Grok Bot / Cursor account: [installed plugin `29533994`](https://cursor.com/dashboard/plugins?plugin-id=29533994)
-  was verified in the signed-in account. It displays the generic plugin icon
-  and the original description, "Hand off work to other people's agents in
-  shared rooms over AgentCouch." Its details include one `agentcouch-chat` skill
-  and one `agentcouch` MCP server. The page exposes **Uninstall**, but no edit,
-  refresh, source repository, or revision controls. The Cursor Directory edit
+  was verified in the signed-in account and refreshed through the official
+  Cursor CLI. It now displays the AgentCouch logo and current repository
+  description, with one `agentcouch-chat` skill and one `agentcouch` MCP server.
+  Its installed state and plugin ID were preserved. The page exposes
+  **Uninstall**, but no edit or refresh controls. The Cursor Directory edit
   below does not update this entry.
 
 ## September 19 refresh
@@ -79,17 +79,44 @@ disclose the hosted service, OAuth sign-in, and Free/Pro pricing.
 
 ## Grok Bot / Cursor follow-up
 
-The installed plugin's description exactly matches the original Cursor
-manifest at commit `5db16aa` (June 19, version `1.0.0`). Commit `96b2e0c`
-(July 26) replaced that description and added `assets/logo-512.png` to the
-manifest. The observed metadata therefore suggests an old imported copy;
-the UI does not expose its source or revision, so this is not proof of which
-commit it currently runs.
+The CLI confirmed a personal (`user` scope) marketplace named `agentcouch`
+from `https://github.com/stoyan-stoyanov/agentcouch-plugins`, pinned to
+`5db16aaf156891f4108b2005418aecdb12ea85dd` (June 19, version `1.0.0`). That
+revision contains the old description and no logo. Commit `96b2e0c` (July 26)
+added the logo and changed the description.
+
+The supported CLI refresh reported one plugin indexed, but kept the old
+commit and visible metadata:
+
+```sh
+agent plugin marketplace update agentcouch
+```
+
+Re-importing the same repository with an explicit reference updated the
+**existing installed plugin**, without uninstalling or creating a second
+marketplace:
+
+```sh
+agent plugin marketplace add https://github.com/stoyan-stoyanov/agentcouch-plugins --git-ref main
+```
+
+A fresh visit to plugin `29533994` showed the AgentCouch display name, updated
+description and skill, and the rendered 512×512 logo served from commit
+`bf0dcfad789f1328e236ffe30a6dfcc83c72ce67`. The page still showed **Uninstall**,
+confirming the plugin remained installed. The refreshed description was:
+
+> Hosted MCP messaging rooms for existing agents across different owners, clients, and machines, with authenticated account attribution and a human-readable transcript.
+
+The CLI's `marketplace list --format json` still reported the old marketplace
+`gitRef` and indexing timestamp after the successful import. Check the actual
+plugin page after updates; do not treat that marketplace record as proof of
+the plugin's displayed revision. Automatic tracking of `main` is not verified.
+Because `update` reads the stored old reference, use the explicit-reference
+import above for future manual refreshes until Cursor fixes that inconsistency.
 
 The account's sidebar did not link to Plugins & MCPs, but the documented
 direct URL, `https://cursor.com/dashboard/plugins`, worked. **Add** opens
-the public Marketplace. Do not uninstall the existing plugin to try a refresh
-without first verifying a replacement installation route.
+the public Marketplace.
 
 The portable root manifest and Cursor manifests are separate metadata sources.
 The root manifest now uses the refreshed description without the word
@@ -98,18 +125,17 @@ The root manifest now uses the refreshed description without the word
 has no standard `logo` field; do not add an unsupported field to guess at a
 client's branding behavior.
 
-For an existing team marketplace, Cursor documents a **Refresh** action to
-re-index the tracked repository. Official public Marketplace updates are
-reviewed before publication. Determine which applies to the existing entry
-before refreshing or submitting, and verify the actual listing's description
-and rendered image afterward. See [Cursor plugin maintenance](https://cursor.com/docs/plugins#keep-plugins-up-to-date)
+Cursor documents the CLI commands in its [July 13 CLI release notes](https://cursor.com/docs/cli/changelog#july-13-2026-release).
+Cursor staff also acknowledged stale personal GitHub imports in this
+[plugin update discussion](https://forum.cursor.com/t/plugin-update-version-management-how-are-installed-plugins-updated/166454/8).
+Team marketplaces offer separate manual and automatic refresh controls; public
+Marketplace updates require review. Neither describes this personal import.
+See [Cursor plugin maintenance](https://cursor.com/docs/plugins#keep-plugins-up-to-date)
 and the [Cursor manifest reference](https://cursor.com/docs/reference/plugins#logos).
 
-If the existing entry cannot be managed in the app, the publisher portal lists
-`marketplace-publishing@cursor.com` for publishing questions. Include plugin
-ID `29533994`, the source repository, the observed description and missing
-logo, and the desired reviewed revision when requesting an update path.
-No publisher application or support email was submitted during this check.
+No publisher application, support email, or uninstall was needed for this
+refresh. The proposed copy changes in this PR must reach `main` before the
+same command can publish that wording from `main`.
 
 This refresh changed listing metadata only. It did not deploy AgentCouch or
 create test accounts, rooms, messages, files, local servers, or containers.
