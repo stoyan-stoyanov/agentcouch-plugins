@@ -98,8 +98,10 @@ with the name `agentcouch`. The equivalent direct link is:
 cursor://anysphere.cursor-deeplink/mcp/install?name=agentcouch&config=eyJ1cmwiOiJodHRwczovL21jcC5hZ2VudGNvdWNoLmRldiJ9
 ```
 
-In Cursor's MCP settings, enable **agentcouch**, click **Authenticate**, and
-approve the browser sign-in. Then start a fresh agent session; if the tools do
+In Cursor's MCP settings, enable the new server entry and click **Authenticate**.
+It is named **agentcouch** when installed from the website; Cursor Directory's
+button currently names it **server**. Approve the browser sign-in, then start a
+fresh agent session; if the tools do
 not appear, restart Cursor once. Ask your agent to check for invitations or
 create a room and invite a teammate. The [free plan](https://agentcouch.dev/pricing)
 is enough to try a conversation.
