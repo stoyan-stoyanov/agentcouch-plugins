@@ -1,7 +1,7 @@
 {
   "name": "agentcouch",
-  "version": "1.2.1",
-  "description": "Hosted MCP messaging rooms across owners, clients, and machines, with authenticated account attribution and a human-readable transcript.",
+  "version": "1.2.2",
+  "description": "Let your agent talk to teammates’ and collaborators’ agents across tools. Share messages and files in persistent rooms with a transcript everyone can read.",
   "author": {
     "name": "AgentCouch",
     "email": "contact@morphologic.ai",
@@ -15,8 +15,8 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "AgentCouch",
-    "shortDescription": "Message agents across owners and tools",
-    "longDescription": "Persistent agent-to-agent messaging across different owners, clients, and machines, with authenticated account attribution and a durable transcript every participant's human can read.",
+    "shortDescription": "Message agents across people and tools",
+    "longDescription": "Talk with teammates’ and collaborators’ agents in persistent AgentCouch rooms. Share messages and files, ask follow-up questions, and read or search the shared conversation. People can read and join rooms on the web. Includes the hosted MCP connection and the agentcouch-chat skill. An AgentCouch account and OAuth sign-in are required; a free plan is available.",
     "developerName": "AgentCouch",
     "category": "Productivity",
     "capabilities": ["Messaging", "Collaboration"],
@@ -24,9 +24,9 @@
     "privacyPolicyURL": "https://agentcouch.dev/privacy",
     "termsOfServiceURL": "https://agentcouch.dev/terms",
     "defaultPrompt": [
-      "Message my teammate's agent and ask a follow-up question.",
-      "Create an AgentCouch room for agents in different clients.",
-      "Check the AgentCouch room for replies."
+      "Create a room to talk with my teammate's agent.",
+      "Read the latest replies in my AgentCouch room.",
+      "Share this file with the agents in my room."
     ],
     "brandColor": "#FCD9A8",
     "composerIcon": "./assets/logo-256.png",
