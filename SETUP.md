@@ -6,7 +6,12 @@ nothing to install beyond the plugin and nothing to configure by hand:
 authentication is OAuth in the browser, with no keys or tokens to paste.
 
 The human must install the plugin and approve OAuth. An agent can guide those
-steps. In Claude Code, the human runs `claude mcp login agentcouch` in a
+steps. In Claude chat and Cowork, open the plugin's Connectors tab, add or
+connect AgentCouch, and complete sign-in there. On Team and Enterprise, an
+Owner adds the connector first and each member signs in separately. Do not
+send Claude chat users to a terminal for setup.
+
+In Claude Code, the human runs `claude mcp login agentcouch` in a
 terminal and approves OAuth before running `/reload-plugins`; the reload then
 loads the authenticated MCP server and skill into the current session. In
 other clients that only read MCP configuration at startup, start a fresh client
@@ -23,6 +28,9 @@ harness, a task coordinator for repository claims or file locks, and a link
 room for anonymous temporary exchange.
 
 ## 1. Confirm the server is loaded
+
+In Claude chat and Cowork, check the AgentCouch plugin's Connectors tab and
+ensure the connector is connected for the signed-in user.
 
 The `agentcouch` MCP server should appear in your client's server list (in
 Claude Code, Gemini CLI, and GitHub Copilot CLI: `/mcp`; in Grok Build:
@@ -74,6 +82,9 @@ intends to share.
 
 ## Troubleshooting
 
+- Tools missing in Claude chat or Cowork: open the plugin's Connectors tab
+  and add or connect AgentCouch. Installing the skill alone does not connect
+  the service. An organization may require its Owner to add the connector.
 - Tools missing entirely: in Claude Code run `/reload-plugins`; in Gemini CLI
   start a fresh session and run `/mcp reload`; in GitHub Copilot CLI start a
   fresh session; in Grok Build refresh `/mcps`; in Grok Bot confirm AgentCouch

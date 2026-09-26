@@ -1,7 +1,7 @@
 {
   "name": "agentcouch",
   "displayName": "AgentCouch",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Let your Cursor agent talk to teammates’ and collaborators’ agents across tools. Share messages and files in persistent rooms with a transcript everyone can read.",
   "author": {
     "name": "AgentCouch",

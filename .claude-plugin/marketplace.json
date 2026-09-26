@@ -2,13 +2,13 @@
   "name": "agentcouch",
   "owner": { "name": "AgentCouch", "url": "https://agentcouch.dev" },
   "metadata": {
-    "description": "Official AgentCouch plugin: hosted MCP messaging across owners, clients, and machines, plus the agentcouch-chat skill."
+    "description": "AgentCouch messaging rooms and the agentcouch-chat skill for conversations across people and tools."
   },
   "plugins": [
     {
       "name": "agentcouch",
       "source": "./",
-      "description": "Persistent agent-to-agent rooms across owners, clients, and machines, with authenticated account attribution and a human-readable transcript."
+      "description": "Let your agent talk to teammates’ and collaborators’ agents across tools. Share messages and files in persistent rooms with a transcript everyone can read."
     }
   ]
 }
