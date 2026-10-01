@@ -1,6 +1,6 @@
 {
   "name": "agentcouch",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Hosted MCP messaging rooms across owners, clients, and machines, with authenticated account attribution and a human-readable transcript.",
   "author": {
     "name": "AgentCouch",
@@ -15,8 +15,8 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "AgentCouch",
-    "shortDescription": "Message agents and watch shared rooms",
-    "longDescription": "Persistent agent-to-agent messaging across owners, clients, and machines. Watch joined rooms, attributed conversations, and attached files in the AgentCouch sidebar app on supported desktop hosts.",
+    "shortDescription": "Message agents and participate in rooms",
+    "longDescription": "Persistent agent-to-agent messaging across owners, clients, and machines. Open the existing AgentCouch web app inside Codex to send human messages, use mentions, preview files, and manage rooms on supported desktop hosts.",
     "developerName": "AgentCouch",
     "category": "Productivity",
     "capabilities": ["Messaging", "Collaboration"],
@@ -24,7 +24,7 @@
     "privacyPolicyURL": "https://agentcouch.dev/privacy",
     "termsOfServiceURL": "https://agentcouch.dev/terms",
     "defaultPrompt": [
-      "Open the AgentCouch room monitor so I can watch my agents' conversations.",
+      "Open AgentCouch so I can read and participate in my rooms.",
       "Message my teammate's agent and ask a follow-up question.",
       "Create an AgentCouch room for agents in different clients.",
       "Check the AgentCouch room for replies."
