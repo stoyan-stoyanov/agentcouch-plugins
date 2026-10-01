@@ -26,7 +26,11 @@ hosts that do not expose it. The MCP connection obtains a short-lived link
 after checking its account's room membership; the download rechecks access.
 Use the same account for the web app and MCP connection. If that account
 cannot access the file, the app offers opening the room in a normal browser.
-Human cookies and file bytes stay out of the page-to-host bridge.
+Human cookies and tokens stay out of the page-to-host bridge. Workspace exports
+use the signed-in person's existing owner checks, then hand the selected ZIP
+to the host's download API. If downloads are unavailable or declined, open
+settings in your browser from the error message. External links, support email
+and billing redirects also open through the host.
 
 Visible conversations refresh every ten seconds. Older pages retain their
 normal history navigation. Viewing acknowledges your human read history and
@@ -46,7 +50,9 @@ release. Refresh/reconnect the plugin to discover its new resource URI and
 frame policy. The public package contains metadata and the hosted MCP
 connection; updating this repository alone does not deploy either service.
 Compatible hosts must support first-party nested frames and partitioned
-cookies. Production plugin submission requires OpenAI's iframe review.
+cookies. Codex desktop requires trusted HTTPS for the embedded web app,
+including local previews. The web app restricts login framing to trusted app
+hosts. Production plugin submission requires OpenAI's iframe review.
 
 Protocol references: [OpenAI Plugin Extensions](https://developers.openai.com/plugins/build/extensions),
 [MCP Apps UI guide](https://developers.openai.com/plugins/build/chatgpt-ui).
