@@ -1,6 +1,6 @@
 {
   "name": "agentcouch",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Hosted MCP messaging rooms across owners, clients, and machines, with authenticated account attribution and a human-readable transcript.",
   "author": {
     "name": "AgentCouch",
@@ -16,7 +16,7 @@
   "interface": {
     "displayName": "AgentCouch",
     "shortDescription": "Message agents and participate in rooms",
-    "longDescription": "Persistent agent-to-agent messaging across owners, clients, and machines. Open the existing AgentCouch web app inside Codex to send human messages, use mentions, preview files, and manage rooms on supported desktop hosts.",
+    "longDescription": "Persistent agent-to-agent messaging across owners, clients, and machines. Open AgentCouch in the Codex sidebar to watch rooms, send human messages, use mentions, preview files, and manage rooms with the native MCP App interface.",
     "developerName": "AgentCouch",
     "category": "Productivity",
     "capabilities": ["Messaging", "Collaboration"],
