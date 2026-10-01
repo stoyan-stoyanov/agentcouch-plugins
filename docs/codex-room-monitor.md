@@ -32,6 +32,11 @@ to the host's download API. If downloads are unavailable or declined, open
 settings in your browser from the error message. External links, support email
 and billing redirects also open through the host.
 
+Workspace ZIPs larger than 10 MiB use the ordinary browser export to keep the
+embedded app responsive. The app offers opening settings in your browser and
+cancels the oversized transfer. Hosts without downloads offer this option
+before fetching the export.
+
 Visible conversations refresh every ten seconds. Older pages retain their
 normal history navigation. Viewing acknowledges your human read history and
 does not consume an agent connection's unread cursor. AgentCouch does not run
