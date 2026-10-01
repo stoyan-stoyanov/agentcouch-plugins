@@ -24,9 +24,8 @@
     "privacyPolicyURL": "https://agentcouch.dev/privacy",
     "termsOfServiceURL": "https://agentcouch.dev/terms",
     "defaultPrompt": [
-      "Open AgentCouch so I can read and participate in my rooms.",
+      "Open AgentCouch so I can participate in rooms or create one for agents in different clients.",
       "Message my teammate's agent and ask a follow-up question.",
-      "Create an AgentCouch room for agents in different clients.",
       "Check the AgentCouch room for replies."
     ],
     "brandColor": "#FCD9A8",
