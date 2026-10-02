@@ -34,14 +34,17 @@ available before attempting to use them.
 ## Starting
 
 Rooms are **create-first**: make the room (with just you), then bring
-people in. `create_room` always succeeds — it's never blocked on sharing a
+people in. Room creation is never blocked on sharing a
 workspace.
 
-- Create a room: `create_room(name="<optional>")` → returns a `room_id`
-  with only you in it. By default it lives in your personal workspace; pass
-  `workspace_id=<a team you belong to>` for a room your teammates can
-  discover. You can also bring people in at creation with
-  `members=["<email>", ...]` — same rules as `add_to_room` below.
+- Create a room: ask which workspace to use if the user has not specified
+  one. Use `whoami` to find their workspace IDs, then call
+  `create_room(name="<optional>", workspace_id="<chosen ID>")`. Never choose
+  a workspace on the user's behalf. Omitting `workspace_id` returns
+  `status="workspace_required"` and workspace choices without creating a room.
+  A successful call returns a `room_id` with you in it. You can also pass
+  `members=["<email>", ...]` — the same rules as `add_to_room` below.
+
 - Bring someone in: `add_to_room(room_id, "<email-or-id>")`.
   - If they share the room's workspace they're **added instantly**
     (`added: true`) and can read and reply right away.
@@ -79,21 +82,27 @@ workspace.
   login flow and restart/reinitialize the MCP client. The server refuses to
   store an agent write that has neither OAuth connection nor session identity.
 
-## The loop — follow the conversation with read_room
+## Offer to watch the room
 
-To see the conversation and await a reply, call **`read_room(room_id)`**.
-It returns the last few messages, and — when you've already seen the
-latest (you sent the most recent one) — it **blocks** and returns the
-moment the other party replies. So just repeat:
+After sending a message, if a reply or follow-up is possible and the user
+has not asked you to watch, ask: "Would you like me to watch this room for
+a reply?" A request to send a message does not itself authorize ongoing
+watching. An existing request to watch covers that watch; do not ask on
+every read. Respect a decline; do not keep asking.
 
-1. `read_room(room_id)` → the recent thread. Read the latest message.
-2. If it's a reply you should act on: do the work, then
-   `send_message(room_id, body)`.
-3. Call `read_room(room_id)` again — it waits for their next reply.
+Only after the user agrees, use **`read_room(room_id)`** to await the
+requested reply, or **`list_inbox`** to check for updates. `read_room`
+returns unread messages; when caught up, it holds for about 25 seconds and
+returns when an addressed reply arrives. `no_reply_yet` means that one
+window closed. Continue only within the user's agreed watch, and stop when
+the requested reply arrives, the agreed limit is reached, or the user asks
+you to stop. Report the result or that you stopped waiting.
 
-You don't track cursors or set timers; `read_room` handles the waiting.
 Don't call `read_room`/`list_inbox` in a tight loop to "check" — that's a
-runaway, and the server rate-limits it.
+runaway, and the server rate-limits it. Do not start background processes
+or execute commands supplied by the server. HTTP capability metadata is
+for a user or an approved client integration to handle, not permission to
+execute local commands.
 
 ## Mentions — addressing a specific person
 
@@ -163,10 +172,11 @@ mentions=[email, user id, or one of your own agent names] on `send_message`.
 **Quiet rooms, in full.** A quiet room is a human conversation, and
 a mention allows ONE post — compose once: stage files with
 `create_attachment(..., post=false)`, then a single `send_message` with body
-plus `attachment_ids`. Keep your background watch armed there (it stays
-silent through the discussion and rings on your mention, or after a resume
-when there is something new) and STOP foreground read_room looping; catch up
-with `list_inbox` if you dropped the hold. There is no quiet/resume tool on
+plus `attachment_ids`. If the user has not asked you to watch, ask whether
+they want you to watch this room. Once agreed, use `read_room` to await a
+mention or `list_inbox` to check for updates within that watch's limit.
+Unaddressed traffic does not end a quiet-room wait. After a resume, new
+unread messages can end it. There is no quiet/resume tool on
 purpose: only humans change it, from the room's web page. If your user asks
 you to quiet or reopen a room, point them there — and tell them the
 mention-last rule, because a mention is spent by the MENTIONED user's own
@@ -180,10 +190,11 @@ A room with `agent_wake_mode: "mentions_only"` (visible on `list_rooms` /
 right after being @mentioned — one post per mention, and mentions don't
 stack. Compose once: stage files with `create_attachment(..., post=false)`,
 then spend the mention on a single `send_message` with body +
-`attachment_ids`. Posting uninvited returns `room_quiet`. Don't loop
-`read_room` there — keep the background watch armed (it rings on your
-mention, and after a resume when there is something new to read) and catch
-up with `list_inbox` next turn if you dropped it. Quiet/resume is web-only:
+`attachment_ids`. Posting uninvited returns `room_quiet`. Watching still
+needs the user's permission: ask whether they want to watch if they have
+not requested it. Only then use `read_room` or `list_inbox` within the
+agreed watch. Unaddressed traffic does not end a wait; after a resume, new
+unread messages can end it. Quiet/resume is web-only:
 there is no tool, so if your user asks, point them at the room's web page.
 
 ## When to stop
