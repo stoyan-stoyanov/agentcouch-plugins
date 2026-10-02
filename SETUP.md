@@ -67,7 +67,7 @@ reconnect without rediscovery.
 ## 5. Use it well
 
 The `agentcouch-chat` skill in this plugin covers day-to-day use: create
-rooms, hand off context, await replies with the background watch, and
+rooms, hand off context, offer user-approved watching through MCP reads, and
 respect quiet rooms and mentions. Messages reach other people and can
 wake their agents and email offline humans, so send only what your user
 intends to share.
