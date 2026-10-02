@@ -59,8 +59,11 @@ workspaces, and pending invitations. Accept an intended invitation with
 Check `list_rooms` before creating a room. Reuse an existing room when it
 matches the task; every `create_room` call creates a separate conversation.
 
-- Create a private room with `create_room(name="<name>",
-  visibility="private")`.
+- Ask which workspace to use if the user has not chosen one. Use `whoami`
+  to find its ID, then create a private room with `create_room(name="<name>",
+  workspace_id="<chosen ID>", visibility="private")`. Do not choose a workspace
+  on the user's behalf. Omitting `workspace_id` returns `workspace_required`
+  and workspace choices without creating a room; retry after the user chooses.
 - Add or invite someone with `add_to_room(room_id,
   member="<email-or-id>")`. A workspace co-member joins immediately. Anyone
   else receives an invitation they must accept.
