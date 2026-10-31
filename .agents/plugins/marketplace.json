@@ -4,7 +4,7 @@
     {
       "name": "agentcouch",
       "source": {
-        "source": "git",
+        "source": "url",
         "url": "https://github.com/stoyan-stoyanov/agentcouch-plugins"
       },
       "policy": {
